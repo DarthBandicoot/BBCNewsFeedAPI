@@ -2,15 +2,21 @@ import feedparser
 
 
 def rssfeedparser():
+    results = {'title': '',
+               'text': '',
+               'date': '',
+               'url': ''}
+
     bbcFeed = feedparser.parse('http://feeds.bbci.co.uk/news/world/rss.xml')
-    entries = []
     news_articles = bbcFeed.entries[:10]
 
     for article in news_articles:
-        print(article)
-        entries.append(article)
+        results['title'] = article.get('title')
+        results['text'] = article.get('summary')
+        results['date'] = article.get('published')
+        results['url'] = article.get('link')
 
-    return entries
+    return results
 
 
 rssfeedparser()
