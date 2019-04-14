@@ -2,7 +2,7 @@ import feedparser
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, FormView
 
 
 class NewsList(TemplateView):
@@ -11,7 +11,10 @@ class NewsList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.results.clear()
+        self.news_results()
         context['articles'] = self.results
+        context['title_header'] = 'Top 10 BBC News Articles'
         return context
 
     def news_results(self):
@@ -21,3 +24,8 @@ class NewsList(TemplateView):
         for article in news_articles:
             self.results.append(article)
         return self.results
+
+
+class AddNewArticle(FormView):
+    pass
+

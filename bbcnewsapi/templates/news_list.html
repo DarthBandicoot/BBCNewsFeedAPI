@@ -32,23 +32,20 @@
                     </th>
                 </tr>
 
-                {% for key,value in articles.items %}
+                {% for article in articles %}
 
                     <tr>
                         <td>
-                            {{ value.title }}
+                            {{ article.title }}
                         </td>
                         <td>
-                            {{ value.summary }}
+                            {{ article.summary }}
                         </td>
                         <td>
-
+                            {{ article.published }}
                         </td>
                         <td>
-
-                        </td>
-                        <td>
-
+                            {{ article.link }}
                         </td>
                     </tr>
 
