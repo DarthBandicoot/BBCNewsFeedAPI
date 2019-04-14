@@ -32,6 +32,8 @@
                     </th>
                 </tr>
 
+                </thead>
+                <tbody>
                 {% for article in articles %}
 
                     <tr>
@@ -51,9 +53,12 @@
 
                 {% endfor %}
 
-                </thead>
-            </table>
+                </tbody>
 
+            </table>
+            <form action='{% url 'new_article' %}' method='GET'>
+                <button type='submit' class="btn btn-primary"> Add New Article</button>
+            </form>
         </div>
     </div>
 </div>
