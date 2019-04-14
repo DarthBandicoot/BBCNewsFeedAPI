@@ -21,9 +21,11 @@ Plan Of Action:
 
 For First part -
 
-1 ListView displaying 10 news using bbc rss feed and from "http://feeds.bbci.co.uk/news/world/rss.xml"
-Use feedparser library to parse the xml and return the news stories in a table
-1 bootstap table template displaying the stories with headers "title, text, date, URL. Clickable url 
+1) 1 ListView displaying 10 news using bbc rss feed and from "http://feeds.bbci.co.uk/news/world/rss.xml"
+
+2) Use feedparser library to parse the xml and return the news stories in a table
+
+3) 1 bootstap table template displaying the stories with headers "title, text, date, URL. Clickable url 
 
 
 
