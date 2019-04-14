@@ -1,7 +1,6 @@
 import feedparser
 import requests
 from bs4 import BeautifulSoup
-# Create your views here.
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
@@ -20,6 +19,10 @@ class NewsList(TemplateView):
         return context
 
     def news_results(self):
+        """
+        function to return top 10 stories of the bbc
+        :return:
+        """
         bbcFeed = feedparser.parse('http://feeds.bbci.co.uk/news/world/rss.xml')
         news_articles = bbcFeed.entries[:10]
 
@@ -30,6 +33,9 @@ class NewsList(TemplateView):
 
 
 class AddNewArticle(NewsList, FormView):
+    """
+    class with form to add new article
+    """
     template_name = 'generic_form.html'
     form_class = NewArticleForm
 
@@ -50,6 +56,12 @@ class AddNewArticle(NewsList, FormView):
         )
 
     def get_bbc_article(self, url):
+        """
+        function to take url and parse the contents of the webpage to return a news article,
+        need to add error checking around to take in to account if user adds an invalid url
+        :param url:
+        :return:
+        """
         response = requests.get(url)
         html = response.text
 
