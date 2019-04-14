@@ -60,8 +60,9 @@ class AddNewArticle(NewsList, FormView):
 
         print('title :{}, description: {}, date {}, url: {}'.format(title, description, date, url))
 
-        item = {'title': title, 'description': description, 'date': date, 'url': url}
+        item = {'title': title.contents, 'summary': description.contents, 'published': date.contents, 'link': url}
 
-        self.results.append(item)
+        if item not in self.results:
+            self.results.append(item)
 
         return self.results
