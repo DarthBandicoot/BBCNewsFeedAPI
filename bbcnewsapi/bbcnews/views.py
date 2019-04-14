@@ -5,13 +5,12 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 
 
-class NewsList(ListView):
+class NewsList(TemplateView):
     template_name = 'news_list.html'
-    context_object_name = ''
     results = []
 
-    def get_context_data(self, request, *args, **kwargs):
-        context = super(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['articles'] = self.results
         return context
 
@@ -22,8 +21,3 @@ class NewsList(ListView):
         for article in news_articles:
             self.results.append(article)
         return self.results
-
-    def get_context_object_name(self, object_list):
-        self.context_object_name = self.news_results()
-
-        return self.context_object_name
